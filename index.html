@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Skill Gap → Job Readiness Mapper | Scaler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+    try {
+      var d = JSON.parse(localStorage.getItem('job_readiness_funnel') || '{}');
+      d.landed = (d.landed || 0) + 1;
+      d.last = 'landed';
+      d.timestamp = Date.now();
+      localStorage.setItem('job_readiness_funnel', JSON.stringify(d));
+    } catch (e) {}
+  </script>
+  <header>
+    <div class="logo">Job Readiness Mapper</div>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="analyzer.html">Check readiness</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Are you actually ready for this software job?</h1>
+      <p class="lead">Check your real job readiness for Backend, Full Stack, or Data roles — beyond just resumes. See where you stand and what to learn next.</p>
+      <a href="analyzer.html" class="cta">Check My Job Readiness</a>
+    </section>
+
+    <section id="how" class="how">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <h3>Resume or job description</h3>
+          <p>Paste your resume or a job description you’re targeting. No sign-up required.</p>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <h3>Pick your target role</h3>
+          <p>Choose Backend, Full Stack, or Data Engineer. We compare your profile to what’s expected.</p>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <h3>Get your gaps and next steps</h3>
+          <p>See a readiness score, skill gaps by area, and how to close them with structured learning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <p>Free. No sign-up. Takes under a minute.</p>
+      <a href="analyzer.html" class="cta cta-secondary">Check My Job Readiness</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built to help job seekers see real skill gaps and take focused next steps.</p>
+  </footer>
+</body>
+</html>

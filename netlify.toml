@@ -1,0 +1,9 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/job-readiness"
+  to = "/.netlify/functions/job-readiness"
+  status = 200
+  force = true

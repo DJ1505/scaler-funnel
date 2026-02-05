@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Job Readiness — AI Skill Gap Mapper | Scaler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="analyzer-layout">
+    <a href="index.html" class="back-link">← Back</a>
+
+    <h1>Are you actually ready for this software job?</h1>
+    <p class="subtitle">Check your real job readiness for Backend, Full Stack, or Data roles. Paste your resume or a job description and we’ll show you where you stand and what to learn next.</p>
+
+    <form class="analyzer-form" id="analyzerForm">
+      <div class="input-tabs">
+        <button type="button" class="tab active" data-tab="resume">Resume</button>
+        <button type="button" class="tab" data-tab="jd">Job Description</button>
+      </div>
+
+      <div class="tab-panel active" id="resumePanel">
+        <div class="input-sub-tabs">
+          <button type="button" class="sub-tab active" data-subtab="paste">Paste</button>
+          <button type="button" class="sub-tab" data-subtab="upload">Upload PDF</button>
+        </div>
+        <div class="sub-tab-panel active" id="resumePastePanel">
+          <textarea id="resumeInput" placeholder="Paste your resume here (from Word, PDF, or any doc). We use it only to detect skills — nothing is stored." minlength="1"></textarea>
+        </div>
+        <div class="sub-tab-panel" id="resumeUploadPanel">
+          <div class="upload-zone" id="uploadZone">
+            <p>Drop your PDF here or <span class="upload-link">browse</span></p>
+            <input type="file" id="pdfInput" accept=".pdf" hidden>
+          </div>
+          <p class="hint">Scanned PDFs won’t work — we need selectable text.</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="jdPanel">
+        <textarea id="jdInput" placeholder="Paste the job description you’re targeting. We’ll extract expected skills and compare them to a standard framework for the role."></textarea>
+      </div>
+
+      <div class="role-row">
+        <label for="roleSelect">Target role</label>
+        <select id="roleSelect" required>
+          <option value="Backend Engineer">Backend Engineer</option>
+          <option value="Full Stack Engineer">Full Stack Engineer</option>
+          <option value="Data Engineer">Data Engineer</option>
+        </select>
+      </div>
+
+      <p class="hint" id="mainHint">Provide at least a few lines of text (resume or job description) so we can analyze skills meaningfully. This tool does not guarantee job outcomes or salary.</p>
+      <div class="btn-row">
+        <button type="submit" id="analyzeBtn">Check My Job Readiness</button>
+        <button type="button" class="secondary" id="clearBtn">Clear</button>
+      </div>
+    </form>
+
+    <div id="results" class="results job-readiness-results" style="display: none;">
+      <h2>Your job readiness</h2>
+      <div class="score-row">
+        <div class="score-circle" id="scoreCircle">0</div>
+        <div>
+          <p id="scoreLabel">You are <strong id="scorePct">0</strong>% ready for <strong id="scoreRole">—</strong> roles</p>
+          <p class="score-text" id="scoreSubtext">—</p>
+        </div>
+      </div>
+
+      <div class="insight-box" id="insightBox">
+        <p class="insight-label">Insight</p>
+        <p class="insight-text" id="insightText">—</p>
+      </div>
+
+      <div class="skill-gap-section">
+        <h3>Skill gaps</h3>
+        <div class="table-wrap">
+          <table class="skill-gap-table" id="skillGapTable">
+            <thead>
+              <tr>
+                <th>Skill area</th>
+                <th>Expected</th>
+                <th>Your level</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="skillGapBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <section class="close-gaps-section" id="closeGapsSection">
+        <h3>How to close these gaps</h3>
+        <p class="close-gaps-intro">Weak areas matter in real interviews. Here’s why they’re important and how Scaler can help.</p>
+        <ul class="gap-cards" id="gapCards"></ul>
+        <div class="next-step-ctas">
+          <div class="next-step-primary">
+            <a href="https://www.scaler.com/" target="_blank" rel="noopener" class="cta" id="consultCta">Book a Free 15-Minute Career Consultation</a>
+            <p>A Scaler career mentor can help you plan a focused learning path instead of random prep.</p>
+          </div>
+          <div class="next-step-secondary">
+            <a href="https://www.scaler.com/" target="_blank" rel="noopener" class="cta cta-secondary" id="programsCta">Explore Relevant Scaler Programs</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="emptyState" class="empty-state" style="display: none;">
+      <p id="emptyMessage">Paste your resume or job description and choose a target role, then click Check My Job Readiness.</p>
+    </div>
+
+    <div id="errorState" class="empty-state error-state" style="display: none;">
+      <p id="errorMessage">Something went wrong. Please try again.</p>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="analysis-browser.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="analyzer.js"></script>
+</body>
+</html>
