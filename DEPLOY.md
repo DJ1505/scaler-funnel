@@ -37,6 +37,14 @@ In the same **Pages** settings you can add a custom domain (e.g. `readiness.your
 
 ---
 
+## Alternative: Vercel
+
+1. Go to **[vercel.com](https://vercel.com)** and sign in (e.g. with GitHub).
+2. Click **Add New** → **Project**.
+3. Import **DJ1505/scaler-funnel** from GitHub.
+4. Leave **Build Command** and **Output Directory** as auto (or set Output to `.`). Click **Deploy**.
+5. Your site will be at `https://scaler-funnel-*.vercel.app` (or your custom domain).
+
 ## Alternative: Netlify
 
 If you prefer Netlify: [Add new site](https://app.netlify.com/teams/dj1505/projects) → Import from Git → choose **DJ1505/scaler-funnel** → Deploy. The app works there too (with or without the serverless function; the in-browser analysis runs either way).
